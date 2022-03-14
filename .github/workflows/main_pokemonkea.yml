@@ -23,6 +23,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        env:
+          url: ${{ secrets.url }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
