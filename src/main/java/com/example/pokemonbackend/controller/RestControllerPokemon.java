@@ -14,32 +14,32 @@ import java.util.Optional;
 @CrossOrigin
 public class RestControllerPokemon {
 
-  @Autowired
-  private PokemonRepository pokemonRepository;
+    @Autowired
+    private PokemonRepository pokemonRepository;
 
-  @PostMapping("/pokemon")
-  @ResponseStatus(HttpStatus.CREATED)
-  public Pokemon postCounty(@RequestBody Pokemon pokemon) {
-    return pokemonRepository.save(pokemon);
-  }
-
-
-  @GetMapping("/pokemon")
-  public List<Pokemon> getAll() {
-    return pokemonRepository.findAll();
-  }
-
-  @DeleteMapping("/pokemon/{id}")
-  public ResponseEntity<String> deletePokemon(@PathVariable Long id) {
-    pokemonRepository.deleteById(id);
-
-    Optional<Pokemon> o = pokemonRepository.findById(id);
-
-    if (!o.isPresent()) {
-      return new ResponseEntity<>("Pokemon med id = " + id + " er blevet slettet", HttpStatus.OK);
+    @PostMapping("/pokemon")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Pokemon postCounty(@RequestBody Pokemon pokemon) {
+        return pokemonRepository.save(pokemon);
     }
-    return new ResponseEntity<>("Kunne ikke finde id = " + id, HttpStatus.NOT_FOUND);
 
-  }
+
+    @GetMapping("/pokemon")
+    public List<Pokemon> getAll() {
+        return pokemonRepository.findAll();
+    }
+
+    @DeleteMapping("/pokemon/{id}")
+    public ResponseEntity<String> deletePokemon(@PathVariable Long id) {
+        pokemonRepository.deleteById(id);
+
+        Optional<Pokemon> o = pokemonRepository.findById(id);
+
+        if (!o.isPresent()) {
+            return new ResponseEntity<>("Pokemon med id = " + id + " er blevet slettet", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Kunne ikke finde id = " + id, HttpStatus.NOT_FOUND);
+
+    }
 
 }
