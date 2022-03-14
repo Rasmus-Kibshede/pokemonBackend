@@ -25,6 +25,8 @@ jobs:
         run: mvn clean install
         env:
           url: ${{ secrets.url }}
+          user: ${{ secrets.user }}
+          password: ${{ secrets.password }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
