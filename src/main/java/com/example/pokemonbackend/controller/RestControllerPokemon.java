@@ -19,7 +19,7 @@ public class RestControllerPokemon {
 
     @PostMapping("/pokemon")
     @ResponseStatus(HttpStatus.CREATED)
-    public Pokemon postCounty(@RequestBody Pokemon pokemon) {
+    public Pokemon postPokemon(@RequestBody Pokemon pokemon) {
         return pokemonRepository.save(pokemon);
     }
 
